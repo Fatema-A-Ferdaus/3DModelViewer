@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".viewer.ModelViewer"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/purple_200"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/teal_700">
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/phloxviewer_stop_record_fab"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:visibility="gone"
+            />
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <com.google.ar.sceneform.SceneView
+                        android:id="@+id/viewer3D"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/ash"/>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/phloxviewer_options_holder"
+                    android:layout_width="240dp"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/phloxviewer_options_btn"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:backgroundTint="@color/pink"
+                            android:contentDescription="Options"
+                            android:background="@color/white" android:layout_marginTop="10dp" android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp" android:layout_marginBottom="10dp"/>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/phloxviewer_options_close_btn"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/purple_500"
+                            android:contentDescription="Options"
+                            android:background="@color/white"
+                            android:visibility="gone"/>
+
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/phloxviewer_options_camera_btn"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/green"
+                            android:contentDescription="camera"
+                            android:background="@color/white"
+                            android:visibility="gone"
+                    />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/phloxviewer_scale_pin_fab_holder"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/phloxviewer_scale_pin_fab"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/teal_200"
+                />
+
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/phloxviewer_scale_holder"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:visibility="gone">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                    <TextView
+                            android:id="@+id/phloxviewer_scale_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Scale"
+                            android:textColor="@color/blue04"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/phloxviewer_scale_control"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="3"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                        <Button
+                                android:id="@+id/phloxviewer_scale_control_increase"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="+"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                android:textSize="21sp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="3"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                        <Button
+                                android:id="@+id/phloxviewer_scale_control_decrease"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="-"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                android:textSize="21sp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                        <EditText
+                                android:id="@+id/phloxviewer_scale_control_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:hint=".5"
+                                android:textColorHint="@color/green"
+                                android:textColor="@color/pink"
+                                android:inputType="numberDecimal"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/phloxviewer_scale_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Min: 0.1, Max 5.0"
+                            android:textColor="@color/purple_700"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/phloxviewer_rotate_pin_fab_holder"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/phloxviewer_rotate_pin_fab"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/teal_200"/>
+
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/phloxviewer_rotation_holder"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:visibility="gone">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="2"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center">
+
+                            <Button
+                                    android:id="@+id/phloxviewer_rotation_z_btn"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:text="z"
+                                    android:textColor="@color/white"
+                                    android:gravity="center"
+                                    android:textStyle="bold"
+                                    android:textSize="10sp"
+                                    android:backgroundTint="@color/black"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="left">
+
+                            <TextView
+                                    android:id="@+id/phloxviewer_rotation_close_tv"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:text="-"
+                                    android:textColor="@color/white"
+                                    android:background="@color/red01"
+                                    android:gravity="center"
+                                    android:textStyle="bold"
+                                    android:textSize="25sp"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                    <RelativeLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                        <ImageView
+                                android:id="@+id/phloxviewer_rotation_indicator"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_rotation_indicator"/>
+
+                        <View
+                                android:id="@+id/phloxviewer_rotation_sensor_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+
+                        <TextView
+                                android:id="@+id/phloxviewer_rotation_centre_tv"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:text="360"
+                                android:textColorHint="@color/green"
+                                android:textColor="@color/pink"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:layout_centerInParent="true"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                        <Button
+                                android:id="@+id/phloxviewer_rotation_y_btn"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:text="y"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textSize="10sp"
+                                android:backgroundTint="@color/black"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                        <Button
+                                android:id="@+id/phloxviewer_rotation_x_btn"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:text="x"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textSize="10sp"
+                                android:backgroundTint="@color/black"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/phloxviewer_gallery_close_pin_fab_holder"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/phloxviewer_gallery_close_pin_fab"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/teal_200"/>
+
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/phloxviewer_gallery_open_pin_fab_holder"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/phloxviewer_gallery_open_pin_fab"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/teal_200"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/phloxviewer_data_list_holder"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="4"
+            android:background="@color/teal_200"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/pink"
+                android:visibility="visible"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/default_obj_at_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:text="Default Object"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue01"
+                android:visibility="visible"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/default_mat1_at_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:text=""/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue04"
+                android:visibility="visible"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/default_mat2_at_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:text=""/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    </LinearLayout>
